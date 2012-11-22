@@ -1,0 +1,26 @@
+<h2>Departamentos</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @departamentos.each do |departamento| %>
+    <tr>
+      <td><%= departamento.nome %></td>
+      <td width="1"><%= link_to 'Exibir', departamento %></td>
+      <td width="1"><%= link_to 'Editar', edit_departamento_path(departamento) %></td>
+      <td width="1"><%= link_to 'Excluir', departamento, method: :delete, data: { confirm: 'Voce tem certeza?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo Departamento', new_departamento_path %>

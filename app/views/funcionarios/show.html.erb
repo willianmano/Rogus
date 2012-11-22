@@ -1,0 +1,28 @@
+<h2>Funcionário</h2>
+
+<% unless notice.nil? %>
+  <div class="alert alert-success"><%= notice %></div>
+<% end %>
+
+<p>
+  <b>Nome:</b>
+  <%= @funcionario.nome %>
+</p>
+
+<p>
+  <b>Departamento:</b>
+  <%= "#{@funcionario.departamento.nome unless @funcionario.departamento.nome.nil?}" %>
+</p>
+
+<p>
+  <b>Data de contratação:</b>
+  <%= "#{@funcionario.contratacao.strftime("%d/%m/%Y")}" %>
+</p>
+
+<p>
+  <b>Situação:</b>
+  <%= "#{@funcionario.ativo ? "Ativo" : "Inativo"}" %>
+</p>
+
+<%= link_to "Editar", edit_funcionario_path(@funcionario) %>
+<%= link_to "Voltar", funcionarios_path %>

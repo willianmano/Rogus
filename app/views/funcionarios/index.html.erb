@@ -1,0 +1,30 @@
+<h2>Funcionarios</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Departamento</th>
+      <th>Contratato em</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @funcionarios.each do |funcionario| %>
+    <tr>
+      <td><%= funcionario.nome %></td>
+      <td><%= funcionario.departamento.nome %></td>
+      <td><%= funcionario.contratacao.strftime("%d/%m/%Y") %></td>
+      <td width="1"><%= link_to 'Exibir', funcionario %></td>
+      <td width="1"><%= link_to 'Editar', edit_funcionario_path(funcionario) %></td>
+      <td width="1"><%= link_to 'Excluir', funcionario, method: :delete, data: { confirm: 'Voce tem certeza?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo Funcionario', new_funcionario_path %>

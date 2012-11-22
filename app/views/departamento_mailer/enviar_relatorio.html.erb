@@ -1,0 +1,20 @@
+<table>
+  <% @departamentos.each do |departamento| %>
+  	<h2><%= departamento.nome %></h2>
+  	<table border="0" cellspacing="0" cellpadding="2">
+  	  <tr>
+  	  	<th>Nome</th>
+  	  	<th>Contratado em</th>
+  	  	<th>Situação</th>
+  	  </tr>
+  	  <% line = 0 %>
+  	  <% departamento.funcionarios.each do |funcionario| %>
+  	  	<tr bgcolor="#<%= line % 2 == 0 ? "eee" : "fff" %>">
+  	  	<% line += 1 %>
+  	  	<td width="300"><%= funcionario.nome %></td>
+  	  	<td width="100" align="center"><%= funcionario.contratacao %></td>
+  	  	<td align="center"><%= funcionario.ativo ? "Ativo" : "Inativo" %></td>
+  	  <% end %>
+  	</table>
+  <% end %>
+</table>

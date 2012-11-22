@@ -1,0 +1,52 @@
+<%= form_for(@funcionario, :html => {:class => "form-horizontal"}) do |f| %>
+
+
+  <% if @funcionario.errors.any? %>
+    <div id="error_explanation" class="alert alert-error ">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <h3>Erro(s) ao tentar gravar</h3>
+
+      <ul>
+      <% @funcionario.errors.each do |error,message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :nome, "Nome: ", :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :nome, :value => "#{@funcionario.nome}" %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :contratacao, "Data da contratação: ", :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :contratacao,
+                :class => "date",
+                :maxlength => 10,
+                :size => 10,
+                :value => "#{@funcionario.contratacao.strftime("%d/%m/%Y") unless @funcionario.contratacao.nil?}" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :ativo, "Ativo?: ", :class => "control-label" %>
+    <div class="controls">
+      <%= f.check_box :ativo, :value => "@funcionario.ativo" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :departamento_id, "Departamento: ", :class => "control-label" %>
+    <div class="controls">
+      <%= f.select :departamento_id, options_from_collection_for_select(@departamentos, 'id', 'nome', @funcionario.departamento_id) %>
+    </div>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit "Gravar", :class => "btn btn-primary" %>
+  </div>
+<% end %>

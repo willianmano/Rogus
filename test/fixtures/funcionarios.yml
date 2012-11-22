@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  contratacao: 2012-11-20
+  ativo: false
+  departamento_id: 1
+
+two:
+  nome: MyString
+  contratacao: 2012-11-20
+  ativo: false
+  departamento_id: 1
